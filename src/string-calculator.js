@@ -1,13 +1,23 @@
 class Calculator {
     constructor(numbers) {
-        this.input = numbers;
+        this.defaultValue = 0;
+        this.isInputNumber = function(val){
+            return (typeof(+val) == "number" && !Number.isNaN(+val))
+        };
     }
-    add(numbers){
-        if(!numbers){
-            return 0;
+
+    add(numbers) {
+        if (!numbers) {
+            return this.defaultValue;
         }
-        if(parseInt(numbers, 10)){
+        if (this.isInputNumber(numbers)) {
             return parseInt(numbers, 10);
+        }
+        else {
+            var numsArr = numbers.split(',');
+            return numsArr.reduce(function(a,b){
+                return +a+(+b);
+            })
         }
     }
 }

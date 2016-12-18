@@ -15,6 +15,11 @@ describe('String calculator should', function(){
         var sum = calc.add('1');
         assert.equal(sum, 1);
     });
+    it('return summ from 1 to 3 numbers', function(){
+        var calc = createCalc();
+        var sum = calc.add("2,12,123");
+        assert.equal(sum, 137);
+    })
 
 
 });
