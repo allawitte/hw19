@@ -20,6 +20,11 @@ describe('String calculator should', function(){
         var sum = calc.intAdd("2,12,123");
         assert.equal(sum, 137);
     })
+    it('return summ of any amount of numbers', function(){
+        var calc = createCalc();
+        var sum = calc.intAdd('2,3,12,10,222');
+        assert.equal(sum,249);
+    })
 
 
 });

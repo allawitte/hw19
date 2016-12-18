@@ -4,6 +4,9 @@ class Calculator {
         this.isInputNumber = function(val){
             return (typeof(+val) == "number" && !Number.isNaN(+val))
         };
+        this.stringToNum = function(val){
+            return +val;
+        }
     }
 
     intAdd(numbers) {
@@ -15,9 +18,9 @@ class Calculator {
         }
         else {
             var numsArr = numbers.split(',');
-            return numsArr.reduce(function(a,b){
-                return +a+(+b);
-            })
+            return numsArr.reduce((a,b)=>{
+                return (this.stringToNum(a)+this.stringToNum(b));
+            });
         }
     }
 }
