@@ -6,7 +6,7 @@ class Calculator {
         };
     }
 
-    add(numbers) {
+    intAdd(numbers) {
         if (!numbers) {
             return this.defaultValue;
         }
