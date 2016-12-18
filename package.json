@@ -1,0 +1,29 @@
+{
+  "name": "tdd-kata",
+  "version": "1.0.0",
+  "description": "tdd kata homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allawitte/hw19.git"
+  },
+  "keywords": [
+    "mocha",
+    "unit-test",
+    "chai",
+    "javascript"
+  ],
+  "author": "Alla Klimova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allawitte/hw19/issues"
+  },
+  "homepage": "https://github.com/allawitte/hw19#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
