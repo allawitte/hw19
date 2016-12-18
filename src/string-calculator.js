@@ -6,6 +6,9 @@ class Calculator {
         if(!numbers){
             return 0;
         }
+        if(parseInt(numbers, 10)){
+            return parseInt(numbers, 10);
+        }
     }
 }
 module.exports = Calculator;
