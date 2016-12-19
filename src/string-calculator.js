@@ -7,21 +7,31 @@ class Calculator {
         this.stringToNum = function(val){
             return +val;
         }
-        this.cleanFromOtherDElimeters = function(numsArr){
+        this.cleanFromOtherDElimeters = function(nums){
             var arr = [];
-            numsArr.forEach((item, index) => {
-                if(!this.isInputNumber(item)){
-                    var subArr = item.split('\n');
-                    subArr.forEach((itm, inx)=>{
-                        arr.push(itm);
-                    });
-                    numsArr.splice(index,1);
+            nums.forEach((item, index) => {
+                var str = item + '';
+                if(str.match(/-/) != null) {
+                    arr = -1;
                 }
+                else {
+                    if(!this.isInputNumber(item)){
+                        var subArr = item.split('\n');
+                        subArr.forEach((itm, inx)=>{
+                            arr.push(itm);
+                        });
+                        nums.splice(index,1);
+                    }
+                }
+
             });
+            if(arr == -1){
+                return -1;
+            }
             arr.forEach(item => {
-                numsArr.push(item);
+                nums.push(item);
             });
-            return numsArr;
+            return nums;
         }
     }
 
@@ -38,16 +48,24 @@ class Calculator {
                 return this.defaultValue;
             }
             if(numbers.match(/\/\//) != null ){
-                var nums = numbers.replace(/\/\//,'');
-                numsArr = nums.split(';');
+                numbers = numbers.replace(/\/\//,'');
+            }
+            if(numbers.match(/;/)){
+                numsArr = numbers.split(';');
             }
             if(numbers.match(/,/) != null) {
                 numsArr = numbers.split(',');
             }
-            var refineArr = this.cleanFromOtherDElimeters(numsArr);
-            return refineArr.reduce((a,b)=>{
-                return (this.stringToNum(a)+this.stringToNum(b));
-            });
+            if(numsArr.length > 0){
+                var refineArr = this.cleanFromOtherDElimeters(numsArr);
+                console.log('refineArr', refineArr);
+                if(refineArr == -1){
+                    return 'negative numbers are not allowed';
+                }
+                return refineArr.reduce((a,b)=>{
+                    return (this.stringToNum(a)+this.stringToNum(b));
+                });
+            }
         }
     }
 }
