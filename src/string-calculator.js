@@ -26,6 +26,7 @@ class Calculator {
     }
 
     intAdd(numbers) {
+        var numsArr = [];
         if (!numbers) {
             return this.defaultValue;
         }
@@ -36,7 +37,13 @@ class Calculator {
             if(numbers.match(/,\\n/) != null) {
                 return this.defaultValue;
             }
-            var numsArr = numbers.split(',');
+            if(numbers.match(/\/\//) != null ){
+                var nums = numbers.replace(/\/\//,'');
+                numsArr = nums.split(';');
+            }
+            if(numbers.match(/,/) != null) {
+                numsArr = numbers.split(',');
+            }
             var refineArr = this.cleanFromOtherDElimeters(numsArr);
             return refineArr.reduce((a,b)=>{
                 return (this.stringToNum(a)+this.stringToNum(b));

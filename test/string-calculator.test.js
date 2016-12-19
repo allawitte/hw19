@@ -35,6 +35,11 @@ describe('String calculator should', function(){
         var sum = calc.intAdd('1,\\n');
         assert.equal(sum,0);
     })
+        it('returns 3 if delimetrs are ; or ;\\n and beginning //', function(){
+            var calc = createCalc();
+            var sum = calc.intAdd('//;\n1;2');
+            assert.equal(sum, 3);
+        })
 
 });
 
