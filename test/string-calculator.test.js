@@ -24,8 +24,17 @@ describe('String calculator should', function(){
         var calc = createCalc();
         var sum = calc.intAdd('2,3,12,10,222');
         assert.equal(sum,249);
+    });
+    it('returns summ of any numbers where delimiter can be , and \\n', function(){
+        var calc = createCalc();
+        var sum = calc.intAdd('2,3\n7');
+        assert.equal(sum, 12);
     })
-
+    it('returns 0 if delimeter is ,\\n', function(){
+        var calc = createCalc();
+        var sum = calc.intAdd('1,\\n');
+        assert.equal(sum,0);
+    })
 
 });
 

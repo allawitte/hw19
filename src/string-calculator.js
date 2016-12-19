@@ -7,6 +7,22 @@ class Calculator {
         this.stringToNum = function(val){
             return +val;
         }
+        this.cleanFromOtherDElimeters = function(numsArr){
+            var arr = [];
+            numsArr.forEach((item, index) => {
+                if(!this.isInputNumber(item)){
+                    var subArr = item.split('\n');
+                    subArr.forEach((itm, inx)=>{
+                        arr.push(itm);
+                    });
+                    numsArr.splice(index,1);
+                }
+            });
+            arr.forEach(item => {
+                numsArr.push(item);
+            });
+            return numsArr;
+        }
     }
 
     intAdd(numbers) {
@@ -17,8 +33,12 @@ class Calculator {
             return parseInt(numbers, 10);
         }
         else {
+            if(numbers.match(/,\\n/) != null) {
+                return this.defaultValue;
+            }
             var numsArr = numbers.split(',');
-            return numsArr.reduce((a,b)=>{
+            var refineArr = this.cleanFromOtherDElimeters(numsArr);
+            return refineArr.reduce((a,b)=>{
                 return (this.stringToNum(a)+this.stringToNum(b));
             });
         }
